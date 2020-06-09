@@ -6,17 +6,13 @@
  */
 
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import javax.swing.JOptionPane;
-import java.util.*;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.Scanner;
 import javax.swing.*;
 
@@ -27,8 +23,8 @@ public class shootloader {
 	public static shootloader main(String username, String gamecode) throws Exception {
 	JFrame frame = new JFrame("1shoot - Loader");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ImageIcon image = new ImageIcon("./assets/loader.png");
-		System.out.println("/assets/loader.png | directory loaded");
+		ImageIcon image = new ImageIcon("loader-v2.png");
+
 		frame.getContentPane().add(new JLabel(image));	
 	    frame.setUndecorated(true); // hide controls
 	    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();

@@ -39,11 +39,19 @@ public class ClientPanel extends JPanel {
 		URL url;
 
 		try {
-			url = new URL("http://144.172.83.148:85/coordinatesfor?username=" + username + "&gamecode="+gamecode);
+			URL url2;
+			url2 = new URL("http://144.172.83.148:85/update?x=" + (myx) + "&y=" + (myy) + "&gamecode=" + gamecode + "&username=" + username);
+		//	url = new URL("http://144.172.83.148:85/coordinatesfor?username=" + username + "&gamecode="+gamecode);
 			//System.out.println(url);
 			try {
-				InputStream is = url.openStream();
+			//	InputStream is = url.openStream();
+				InputStream is = url2.openStream();
 				try {
+
+
+				//	System.out.println(url2);
+
+					/*
 					Scanner s = new Scanner(is).useDelimiter("\\A");
 					String result = s.hasNext() ? s.next() : "";
 					//System.out.println(result);
@@ -54,7 +62,7 @@ public class ClientPanel extends JPanel {
 				    System.out.println(jo);
 				    System.out.println(myx);
 				    System.out.println(myy);
-				
+				*/
 				} finally {
 				  is.close();
 				}
@@ -82,16 +90,21 @@ public class ClientPanel extends JPanel {
 		addKeyListener(new KeyListener() {
 
 			public void keyTyped(KeyEvent e) {
-				System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
+			//	System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
 
 			}
 
 
 			public void keyPressed(KeyEvent e) {
+
+			}
+
+			public void keyReleased(KeyEvent e) {
+				//System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
 				int keyCode = e.getKeyCode();
 				switch (keyCode) {
 					case KeyEvent.VK_UP:
-						try {
+						/*try {
 							URL url2;
 							url2 = new URL("http://144.172.83.148:85/update?x=" + myx + "&y=" + (myy--) + "&gamecode=" + gamecode + "&username=" + username);
 							System.out.println(url2);
@@ -100,10 +113,15 @@ public class ClientPanel extends JPanel {
 							malformedURLException.printStackTrace();
 						} catch (IOException ioException) {
 							ioException.printStackTrace();
-						}
+						}*
+
+
+						 */
+						myy-=1;
+						repaint();
 						break;
 					case KeyEvent.VK_DOWN:
-						System.out.println("down pressed");
+					/*	System.out.println("down pressed");
 						try {
 							URL url2;
 							url2 = new URL("http://144.172.83.148:85/update?x=" + myx + "&y=" + (myy++) + "&gamecode=" + gamecode + "&username=" + username);
@@ -114,19 +132,21 @@ public class ClientPanel extends JPanel {
 						} catch (IOException ioException) {
 							ioException.printStackTrace();
 						}
+					*/
+						myy+=1;
 						break;
 					case KeyEvent.VK_RIGHT:
 						System.out.println("right pressed");
+						myx+=1;
+						repaint();
 						break;
+
 					case KeyEvent.VK_LEFT:
 						System.out.println("left pressed");
+						myx-=1;
+						repaint();
 						break;
 				}
-			}
-
-			public void keyReleased(KeyEvent e) {
-				System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
-
 			}
 		});
 
