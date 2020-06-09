@@ -27,7 +27,8 @@ public class shootloader {
 	public static shootloader main(String username, String gamecode) throws Exception {
 	JFrame frame = new JFrame("1shoot - Loader");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ImageIcon image = new ImageIcon("/home/pranav/text3954.png");
+		ImageIcon image = new ImageIcon("./assets/loader.png");
+		System.out.println("/assets/loader.png | directory loaded");
 		frame.getContentPane().add(new JLabel(image));	
 	    frame.setUndecorated(true); // hide controls
 	    Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -37,7 +38,7 @@ public class shootloader {
 		frame.setResizable(false);
 		
 		// Check if stuff provided is valid
-		URL url = new URL("http://localhost/joinGame?username=" + username + "&gamecode="+gamecode);
+		URL url = new URL("http://144.172.83.148:85/joinGame?username=" + username + "&gamecode="+gamecode);
 		System.out.println(url);
 		try {
 			InputStream is = url.openStream();
@@ -48,7 +49,7 @@ public class shootloader {
 			    Object obj = new JSONParser().parse(result);
 			    JSONObject jo = (JSONObject) obj;
 				Thread.sleep(1000); // oh yeah 
-				JOptionPane.showMessageDialog(null, "Note: If a session is already full you might kick another player out of the game. This is going to be fixed in the future but for now please be considerate.");
+			//	JOptionPane.showMessageDialog(null, "Note: If a session is already full you might kick another player out of the game. This is going to be fixed in the future but for now please be considerate.");
 
 				frame.setVisible(false);
 				Client.main(username, gamecode, jo);

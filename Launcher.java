@@ -21,7 +21,7 @@ public class Launcher {
 				
 			System.out.println(gamename);
 			System.out.println(playerUsername);
-			URL url = new URL("http://localhost/createGame?username=" + playerUsername + "&gamename="+gamename);
+			URL url = new URL("http://144.172.83.148:85/createGame?username=" + playerUsername + "&gamename="+gamename);
 			System.out.println(url);
 			try {
 				InputStream is = url.openStream();
