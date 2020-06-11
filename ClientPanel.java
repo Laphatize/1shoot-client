@@ -94,66 +94,59 @@ public class ClientPanel extends JPanel {
 
 			}
 
-
+			boolean pressed = false;
 			public void keyPressed(KeyEvent e) {
+				int keyCode = e.getKeyCode();
 
+				switch (keyCode) {
+					case KeyEvent.VK_UP:
+
+						if (!pressed) {
+							pressed = true;
+							System.out.println("User: Up");
+							myy = myy-1;
+							repaint();
+						}
+						break;
+					case KeyEvent.VK_DOWN:
+
+						if (!pressed) {
+							pressed = true;
+							System.out.println("User: Down");
+							myy += 1;
+							repaint();
+						}
+						break;
+					case KeyEvent.VK_RIGHT:
+						if (!pressed) {
+							pressed = true;
+							System.out.println("User: Right");
+							myx += 1;
+							repaint();
+						}
+						//repaint();
+						break;
+
+					case KeyEvent.VK_LEFT:
+						if (!pressed) {
+							pressed = true;
+							System.out.println("User: Left");
+							myx -= 1;
+							repaint();
+						}
+						break;
+
+				}
 			}
 
 			public void keyReleased(KeyEvent e) {
 				//System.out.println("Key pressed code=" + e.getKeyCode() + ", char=" + e.getKeyChar());
-				int keyCode = e.getKeyCode();
-				switch (keyCode) {
-					case KeyEvent.VK_UP:
-						/*try {
-							URL url2;
-							url2 = new URL("http://144.172.83.148:85/update?x=" + myx + "&y=" + (myy--) + "&gamecode=" + gamecode + "&username=" + username);
-							System.out.println(url2);
-							InputStream is = url2.openStream();
-						} catch (MalformedURLException malformedURLException) {
-							malformedURLException.printStackTrace();
-						} catch (IOException ioException) {
-							ioException.printStackTrace();
-						}*
 
-
-						 */
-						myy-=1;
-						repaint();
-						break;
-					case KeyEvent.VK_DOWN:
-					/*	System.out.println("down pressed");
-						try {
-							URL url2;
-							url2 = new URL("http://144.172.83.148:85/update?x=" + myx + "&y=" + (myy++) + "&gamecode=" + gamecode + "&username=" + username);
-							System.out.println(url2);
-							InputStream is = url2.openStream();
-						} catch (MalformedURLException malformedURLException) {
-							malformedURLException.printStackTrace();
-						} catch (IOException ioException) {
-							ioException.printStackTrace();
-						}
-					*/
-						myy+=1;
-						break;
-					case KeyEvent.VK_RIGHT:
-						System.out.println("right pressed");
-						myx+=1;
-						repaint();
-						break;
-
-					case KeyEvent.VK_LEFT:
-						System.out.println("left pressed");
-						myx-=1;
-						repaint();
-						break;
-				}
 			}
 		});
 
-		repaint();
+		
 
-		
-		
 	}
 
 	/*public void keyPressed(KeyEvent e) {
